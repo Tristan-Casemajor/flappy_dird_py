@@ -1,0 +1,28 @@
+<StartScreen>:
+    current_app: app
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.4
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Button:
+        background_down: ''
+        background_color: 0.8, 0.6, 0, 1
+        font_size: dp(28)
+        font_name: "fonts/pixelart.ttf"
+        text_size: self.size
+        valign: "center"
+        halign: "right"
+        pos: root.center_x-self.width/2, root.center_y-self.height/2
+        size: root.button_width, dp(50) # dp(100) au départ
+        text: root.button_text
+        on_press: app.game_status = True
+
+    Label:
+        color: 0, 0.9, 0.5, 1
+        font_size: dp(70)
+        font_name: "fonts/pixelart.ttf"
+        text: root.title_text
+        pos: root.center_x-self.width/2, root.height-dp(180)

@@ -1,0 +1,58 @@
+#:import start_screen start_screen
+
+
+<CoverImage@CoverBehavior+Image>:
+    reference_size: self.texture_size
+
+<GameWidget>:
+    current_app: app
+    image_1: image_1
+    image_2: image_2
+    image_3: image_3
+    image_4: image_4
+    score: score
+    Image:
+        id: image_1
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, dp(95)
+        source: "images/grass.png"
+    Image:
+        id: image_2
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, dp(95)
+        source: "images/grass.png"
+    Image:
+        id: image_3
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, dp(85)
+        source: "images/vines.png"
+    Image:
+        id: image_4
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, dp(85)
+        source: "images/vines.png"
+
+    Score:
+        id: score
+        pos: root.center_x-self.width/2, root.height-dp(70)
+
+<MainWidget>:
+    CoverImage:
+        size: root.size
+        source: "images/background.jpg"
+        canvas.after:
+            Color:
+                rgba: 0, 0, 0, 0.3
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    GameWidget:
+        size: root.size
+        start_screen: start
+    StartScreen:
+        id: start
+        size: root.size
