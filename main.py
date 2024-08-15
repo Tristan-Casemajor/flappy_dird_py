@@ -19,6 +19,8 @@ class Bird(Image):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.source = "images/bird.png"
+        self.allow_stretch = True
+        self.keep_ratio = False
 
 
 class BottomObstacles(Image):
@@ -98,7 +100,7 @@ class GameWidget(Widget):
         self.image_2.pos = self.image_1.pos[0] + self.image_1.width, 0
         self.image_3.pos = 0, self.height-self.image_3.height
         self.image_4.pos = self.image_3.pos[0]+self.image_3.width, self.height-self.image_3.height
-
+        
     def init_obstacles(self, dt=1):
         for obstacle in self.obstacles:
             self.remove_widget(obstacle)
@@ -198,6 +200,8 @@ class GameWidget(Widget):
         self.bird.pos = self.center_x-self.bird.width/2, self.center_y-self.bird.height/2
         # self.score.pos = self.center_x-self.score.width/2, self.height-dp(70)
         self.constant_spacing = self.width/3
+        self.bird.width = self.height/14
+        self.bird.height = self.bird.width
 
         # self.init_obstacles() le mettre ici puis modifier apres avec Clock.schedule
 
@@ -230,6 +234,7 @@ class FlappyBirdPy(App):
     game_speed = dp(1.5)
 
     def build(self):
+        self.icon = "images/bird.ico"
         return MainWidget()
 
 
